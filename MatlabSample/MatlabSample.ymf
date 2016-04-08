@@ -1,0 +1,8 @@
+[YarraModule]
+Name=Matlab Sample
+Description=Simple example that shows how to integrate a Matlab reconstruction into Yarra (performs FFT reconstruction of 3D GRE scan).
+Version=1
+Author=Tobias Block
+Homepage=yarra.rocks
+RequiresMatlab=true
+

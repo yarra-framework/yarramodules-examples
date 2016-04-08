@@ -1,0 +1,41 @@
+;##  YarraServer -- Reconstruction Mode Definition
+;##
+
+;## General options ##
+
+[ClientConfig]
+Name=Matlab Sample Reconstruction (to Drive)
+Tag=_YMD
+RequiresACC=FALSE
+RequiresAdjScans=FALSE
+ConfirmationMail=
+Disabled=false
+SortIndex=2
+
+[Options]
+KeepRawdata=false
+
+
+;## Definition of processing steps ##
+
+[Reconstruction]
+Bin=%hmb
+Args="-nodesktop -nosplash -nojvm -r %hq try, addpath(genpath('%bu/MatlabSample/')); sample_yarra_recon('%rid/','%rif','%rod','%tmp'); catch e, disp(e.message); end, quit; %hq"
+
+[PostProcessing]
+Bin1=%bd/SetDCMTags
+Args1=%pid %pod %rid/%rif -a %vacc -m %mc  -t %rid/rit 
+
+[Transfer]
+Bin=%bd/DriveTransfer
+Args=%mc %td %vuid
+
+
+;## Module options ##
+
+[DriveTransfer]
+
+; Insert the desired output path for the DICOMs here
+
+TargetPath=/tmp
+

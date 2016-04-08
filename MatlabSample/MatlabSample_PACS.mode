@@ -1,0 +1,44 @@
+;##  YarraServer -- Reconstruction Mode Definition
+;##
+
+;## General options ##
+
+[ClientConfig]
+Name=Matlab Sample Reconstruction (to PACS)
+Tag=_YMP
+RequiresACC=FALSE
+RequiresAdjScans=FALSE
+ConfirmationMail=
+Disabled=false
+SortIndex=1
+
+[Options]
+KeepRawdata=false
+
+
+;## Definition of processing steps ##
+
+[Reconstruction]
+Bin=%hmb
+Args="-nodesktop -nosplash -nojvm -r %hq try, addpath(genpath('%bu/MatlabSample/')); sample_yarra_recon('%rid/','%rif','%rod','%tmp'); catch e, disp(e.message); end, quit; %hq"
+
+[PostProcessing]
+Bin1=%bd/SetDCMTags
+Args1=%pid %pod %rid/%rif -a %vacc -m %mc  -t %rid/rit 
+
+[Transfer]
+Bin=%bd/PACSTransfer
+Args=%mc %td
+
+
+;## Module options ##
+
+[PACSTransfer]
+
+; Insert the parameters of your PACS or DICOM workstation here
+
+IP=10.135.12.92
+Port=11112
+AEC=tobiass-imac
+AET=tobiass-imac
+
