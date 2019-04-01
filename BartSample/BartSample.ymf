@@ -1,0 +1,7 @@
+[YarraModule]
+Name=Bart Sample
+Description=Simple example that shows how to integrate a Bart reconstruction into Yarra (performs FFT reconstruction of 3D GRE scan).
+Version=1
+Author=Roy Wiggins
+Homepage=yarra.rocks
+

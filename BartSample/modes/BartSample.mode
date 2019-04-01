@@ -1,0 +1,35 @@
+;##  YarraServer -- Reconstruction Mode Definition
+;##
+
+;## General options ##
+
+[ClientConfig]
+Name=Bart Sample Reconstruction (to Drive)
+Tag=_BRT
+RequiresACC=FALSE
+RequiresAdjScans=FALSE
+ConfirmationMail=
+Disabled=false
+SortIndex=10
+
+[Options]
+KeepRawdata=false
+
+;## Definition of processing steps ##
+
+[Reconstruction]
+Bin="%bu/BartSample/entrypoint.sh"
+Args=--input-file %rid/%rif --output-dir %rod --temp %tmp --mode-file %mc
+
+[PostProcessing]
+Bin1=%bd/SetDCMTags
+Args1=%pid %pod %rid/%rif -a %vacc -m %mc  -t %rid/rit 
+
+[Transfer]
+Bin=%bd/DriveTransfer
+Args=%mc %td %vuid
+
+;## Module options ##
+
+[DriveTransfer]
+TargetPath=/media/result
