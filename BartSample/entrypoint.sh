@@ -14,6 +14,10 @@ while [[ $# -gt 0 ]]; do case $1 in
   *) echo "Unknown parameter passed: $1"; exit 1;;
 esac; shift; done
 
+if [ ! -d "$tempdir" ]; then
+    echo "Temp directory $tempdir not found."
+    exit 1;
+fi
 
 if [ ! -f "$infile" ]; then
     echo "Input file $infile not found."
