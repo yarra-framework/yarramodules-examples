@@ -32,4 +32,4 @@ Args=%mc %td %vuid
 ;## Module options ##
 
 [DriveTransfer]
-TargetPath=/media/result
+TargetPath=/tmp

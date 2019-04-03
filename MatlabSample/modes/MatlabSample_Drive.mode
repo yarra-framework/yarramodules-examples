@@ -10,7 +10,7 @@ RequiresACC=FALSE
 RequiresAdjScans=FALSE
 ConfirmationMail=
 Disabled=false
-SortIndex=2
+SortIndex=1
 
 [Options]
 KeepRawdata=false
@@ -19,8 +19,8 @@ KeepRawdata=false
 ;## Definition of processing steps ##
 
 [Reconstruction]
-Bin=%hmb
-Args="-nodesktop -nosplash -nojvm -r %hq try, addpath(genpath('%bu/MatlabSample/')); sample_yarra_recon('%rid/','%rif','%rod','%tmp'); catch e, disp(e.message); end, quit; %hq"
+Bin="%bu/MatlabSample/entrypoint.sh"
+Args=-m %hmb --input-file %rid/%rif --output-dir %rod --temp %tmp --mode-file %mc
 
 [PostProcessing]
 Bin1=%bd/SetDCMTags
@@ -29,7 +29,6 @@ Args1=%pid %pod %rid/%rif -a %vacc -m %mc  -t %rid/rit
 [Transfer]
 Bin=%bd/DriveTransfer
 Args=%mc %td %vuid
-
 
 ;## Module options ##
 

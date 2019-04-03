@@ -7,12 +7,11 @@
 %              images are saved in the DICOM format with naming convention 
 %              that enables Yarra to group images correctly into one series.
 %
-% Parameters:  work_path   -- Path where the TWIX file is located
-%              meas_file   -- Name of the TWIX file (without path)
+% Parameters:  in_file     -- Path where the TWIX file is located
 %              output_path -- Path where the final images should be written
 %              temp_path   -- Path that can be used for temporary files
 
-function sample_yarra_recon(work_path, meas_file, output_path, temp_path)
+function sample_yarra_recon(in_file, output_path, temp_path)
 
     disp('Yarra Matlab Reconstruction Example');
     disp('-----------------------------------');
@@ -23,7 +22,7 @@ function sample_yarra_recon(work_path, meas_file, output_path, temp_path)
     % addpath('mapVBVD/');          % for reading TWIX files
 
     % Read the data from the Siemens TWIX file
-    twix_obj=mapVBVD([work_path meas_file]);
+    twix_obj=mapVBVD(in_file);
 
     % Get the sequence parameters from the file
     baseresolution=double(twix_obj{2}.image.NCol);

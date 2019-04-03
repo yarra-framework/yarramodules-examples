@@ -4,8 +4,8 @@
 ;## General options ##
 
 [ClientConfig]
-Name=Matlab Sample Reconstruction (to PACS)
-Tag=_YMP
+Name=Matlab Sample Reconstruction (to Drive)
+Tag=_YMD
 RequiresACC=FALSE
 RequiresAdjScans=FALSE
 ConfirmationMail=
@@ -19,8 +19,8 @@ KeepRawdata=false
 ;## Definition of processing steps ##
 
 [Reconstruction]
-Bin=%hmb
-Args="-nodesktop -nosplash -nojvm -r %hq try, addpath(genpath('%bu/MatlabSample/')); sample_yarra_recon('%rid/','%rif','%rod','%tmp'); catch e, disp(e.message); end, quit; %hq"
+Bin="%bu/MatlabSample/entrypoint.sh"
+Args=-m %hmb --input-file %rid/%rif --output-dir %rod --temp %tmp --mode-file %mc
 
 [PostProcessing]
 Bin1=%bd/SetDCMTags
@@ -37,8 +37,8 @@ Args=%mc %td
 
 ; Insert the parameters of your PACS or DICOM workstation here
 
-IP=10.135.12.92
-Port=11112
-AEC=tobiass-imac
-AET=tobiass-imac
+IP=203.0.113.0
+Port=00000
+AEC=aec
+AET=aet
 
