@@ -1,4 +1,11 @@
 #/bin/bash
+set -euo pipefail
+
+if [ ! $(which bart) ]; then
+    echo "bart not found in PATH. Check to see if it is installed correctly."
+    exit 1
+fi
+
 if [ "$#" -ne 3 ]; then
     echo "Invalid number of parameters"
     echo "Required: <infile> <outdir> <tmpdir>"

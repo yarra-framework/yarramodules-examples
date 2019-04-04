@@ -4,7 +4,7 @@
 ;## General options ##
 
 [ClientConfig]
-Name=Matlab Sample Reconstruction (to Drive)
+Name=Matlab Sample Reconstruction (to PACS)
 Tag=_YMD
 RequiresACC=FALSE
 RequiresAdjScans=FALSE
